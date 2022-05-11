@@ -20,5 +20,5 @@ Tempo de Consulta de cada processsamento
 Primeiro teste feito
 
 - WebCrawlerNormal.py = Tempo total da execução:4271 segundos
-- WebCrawlerConcorrente.py = tempo
+- WebCrawlerConcorrente.py = Tempo total da execução:1232 segundos
 - WebCrawlerParalelo.py = tempo
