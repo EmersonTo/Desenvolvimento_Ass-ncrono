@@ -8,7 +8,7 @@ from aiohttp import ClientSession
 all_data  = []
 master_dict = {}
 inicio = time()
-resposta = get('https://pt.wikipedia.org/wiki/Lar')
+resposta = get('https://pt.wikipedia.org/wiki/Sociedade_Esportiva_Palmeiras#Hist%C3%B3rico_Categoria_Master')
 tags = BeautifulSoup(resposta.text,'html5lib')
 nome_pagina = tags.find("h1",attrs={"class" : "firstHeading mw-first-heading"})
 print(f"Página principal: {nome_pagina.text}")
@@ -23,15 +23,10 @@ links =list(filter(lambda x: x.startswith(comeca_com), visitar))
 
 print(f"Total de Páginas a Visitar: {len(visitar)}")
 
-print(f"Página principal: {nome_pagina.text}")
 
 async def fetch(session,url):
-    async with session.get(url) as response:
-        #resposta_sec = get(url)
-        #tags_sec = BeautifulSoup(resposta_sec.text,'html5lib')
-        #nome_pagina_sec = tags_sec.find("h1",attrs={"class" : "firstHeading mw-first-heading"})
-        #print(f"Página secundária:  {nome_pagina_sec.text}")
-        return response.text
+    async with session.get(url) as resp:
+        return await resp.text()
 
 async def run():
     tasks = []
@@ -44,11 +39,13 @@ async def run():
                             ))                    
             tasks.append(task)
         
+        
         responses = await gather(*tasks)
         for resp in responses:
-            print("*****************************************************")
-            print(resp)
-        #print(responses)
+            tags_sec = BeautifulSoup(resp,'html5lib')
+            nome_pagina_sec = tags_sec.find("h1",attrs={"class" : "firstHeading mw-first-heading"})
+            print(f"Página secundária:  {nome_pagina_sec.text}")
+
         
 
 loop = get_event_loop()
