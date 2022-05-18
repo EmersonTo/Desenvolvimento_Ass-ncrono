@@ -12,7 +12,7 @@ Executar os programas:
 - WebCrawlerParalelo.py
 
 cmd executar o comando
-python +nome_do_programa
+python +nom_do_programa
 
 ## Retorno Esperando
 
@@ -21,4 +21,4 @@ Primeiro teste feito
 
 - WebCrawlerNormal.py = Tempo total da execução:4271 segundos
 - WebCrawlerConcorrente.py = Tempo total da execução:1232 segundos
-- WebCrawlerParalelo.py = Tempo total da execução:3425 segundos
+- WebCrawlerParalelo.py = tempo
