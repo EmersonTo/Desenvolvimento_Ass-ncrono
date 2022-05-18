@@ -4,8 +4,7 @@ bs4
 time 
 asyncio
 aiohttp
-
-python WebCrawlerConcorrente.py   
+Process
 
 
 
